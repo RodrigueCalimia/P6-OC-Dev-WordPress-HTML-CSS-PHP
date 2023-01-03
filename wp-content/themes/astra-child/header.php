@@ -26,7 +26,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 <div>
 	<nav id="navigation">
-		<a class="navbar-brand" href="#"><?php bloginfo('name') ?></a>
+		<?php if(has_custom_logo()) : ?>
+		<?php the_custom_logo(); ?>
+		<?php else : ?>
+		<h1><a class="navbar-brand" href="<?php bloginfo('url'); ?>"><?php bloginfo('name'); ?></a></h1>
+		<?php endif; ?>
 		<?php
 			wp_nav_menu(
 				array(
