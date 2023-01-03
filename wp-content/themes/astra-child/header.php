@@ -26,12 +26,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 <div>
 	<nav id="navigation">
-	<?php
-		wp_nav_menu(
-			array(
-				'theme_location' => 'main-menu',
-				'menu_id' => 'primary-menu',
-			)
-		);
-	?>
+		<a class="navbar-brand" href="#"><?php bloginfo('name') ?></a>
+		<?php
+			wp_nav_menu(
+				array(
+					'theme_location' => 'main-menu',
+					'menu_id' => 'menu-principal',
+					'container' => false, /*suprime la div par défaut de WordPress avec la class menu-menu-container*/
+					'menu-class' => 'navbar-nav', /* redefinit la class de la balise nav*/
+				)
+			);
+		?>
 	</nav>
