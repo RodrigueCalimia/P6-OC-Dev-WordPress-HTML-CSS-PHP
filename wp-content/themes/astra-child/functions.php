@@ -3,8 +3,7 @@
 ** activation theme
 **/
 function theme_enqueue_styles() {
- wp_enqueue_style( 'parent-style', get_template_directory_uri() . '/style.css' );
-
+    wp_enqueue_style( 'astra-child', get_stylesheet_directory_uri() . '/style.css');
 }
 /**
 ** activation des menus
@@ -36,7 +35,7 @@ function astra_child_menu_link_class($attrs){
 /**
 ** appel des actions
 **/
-add_action( 'wp_enqueue_scripts', 'theme_enqueue_styles' );
+add_action( 'wp_enqueue_scripts', 'theme_enqueue_styles', 11); /* le chiffre 11 permet de passer devant le parent */
 add_action( 'after_setup_theme', 'register_my_menu' );
 /* recherche dans class-walker-nav-menu.php les filtres à utiliser pour apporter les modifications de classes */
 add_filter('nav_menu_css_class','astra_child_menu_class'); /* ajout d'un filtre pour ajouter une classe aux li de la nav */

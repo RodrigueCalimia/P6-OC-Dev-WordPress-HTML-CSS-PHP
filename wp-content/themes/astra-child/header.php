@@ -1,6 +1,6 @@
 <?php
 /**
- * The header for Astra Child.
+ * The header for Astra Theme.
  *
  * This is the template that displays all of the <head> section and everything up until <div id="content">
  *
@@ -15,30 +15,68 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 ?><!DOCTYPE html>
+<?php astra_html_before(); ?>
 <html <?php language_attributes(); ?>>
 <head>
+<?php astra_head_top(); ?>
 <meta charset="<?php bloginfo( 'charset' ); ?>">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="profile" href="https://gmpg.org/xfn/11">
 
 <?php wp_head(); ?>
+<?php astra_head_bottom(); ?>
 </head>
 
-<div>
-	<nav id="navigation">
-		<?php if(has_custom_logo()) : ?>
-		<?php the_custom_logo(); ?>
-		<?php else : ?>
-		<h1><a class="navbar-brand" href="<?php bloginfo('url'); ?>"><?php bloginfo('name'); ?></a></h1>
-		<?php endif; ?>
-		<?php
-			wp_nav_menu(
-				array(
-					'theme_location' => 'main-menu',
-					'menu_id' => 'menu-principal',
-					'container' => false, /*suprime la div par défaut de WordPress avec la class menu-menu-container*/
-					'menu-class' => 'navbar-nav', /* redefinit la class de la balise nav*/
-				)
-			);
-		?>
-	</nav>
+<body <?php astra_schema_body(); ?> <?php body_class(); ?>>
+<?php astra_body_top(); ?>
+<?php wp_body_open(); ?>
+
+<a
+	class="skip-link screen-reader-text"
+	href="#content"
+	role="link"
+	title="<?php echo esc_html( astra_default_strings( 'string-header-skip-link', false ) ); ?>">
+		<?php echo esc_html( astra_default_strings( 'string-header-skip-link', false ) ); ?>
+</a>
+
+<div
+<?php
+	echo astra_attr(
+		'site',
+		array(
+			'id'    => 'page',
+			'class' => 'hfeed site',
+		)
+	);
+	?>
+>
+	<?php
+	astra_header_before();
+	?>
+	<header>
+		<nav id="navigation" class="barre_logo_menu">
+			<?php if(has_custom_logo()) : ?>
+			<?php the_custom_logo(); ?>
+			<?php else : ?>
+			<h1><a class="navbar-brand" href="<?php bloginfo('url'); ?>"><?php bloginfo('name'); ?></a></h1>
+			<?php endif; ?>
+			<?php
+				wp_nav_menu(
+					array(
+						'theme_location' => 'main-menu',
+						'menu_id' => 'menu-principal',
+						'container' => false, /*suprime la div par défaut de WordPress avec la class menu-menu-container*/
+						'menu-class' => 'navbar-nav', /* redefinit la class de la balise nav*/
+					)
+				);
+			?>
+		</nav>
+	</header>
+	<?php
+	astra_header_after();
+
+	astra_content_before();
+	?>
+	<div id="content" class="site-content">
+		<div class="ast-container">
+		<?php astra_content_top(); ?>

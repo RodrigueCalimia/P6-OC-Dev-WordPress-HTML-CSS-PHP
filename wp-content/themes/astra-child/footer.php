@@ -15,23 +15,32 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 ?>
+<?php astra_content_bottom(); ?>
 	</div> <!-- ast-container -->
 	</div><!-- #content -->
-
-	</div><!-- #page -->
-	<footer>
-		<?php
-			wp_nav_menu(
-				array(
-					'theme_location' => 'footer-menu',
-					'menu_id' => 'pied-de-page',
-					'container' => false, /*suprime la div par défaut de WordPress avec la class menu-menu-container*/
-					'menu-class' => 'navbar-nav', /* redefinit la class de la balise nav*/
-				)
-			);
-		?>
-	</footer>
 <?php 
+	astra_content_after();
+		
+	astra_footer_before();
+?>
+	<footer>
+			<?php
+				wp_nav_menu(
+					array(
+						'theme_location' => 'footer-menu',
+						'menu_id' => 'pied-de-page',
+						'container' => false, /*suprime la div par défaut de WordPress avec la class menu-menu-container*/
+						'menu-class' => 'navbar-nav', /* redefinit la class de la balise nav*/
+					)
+				);
+			?>
+		</footer>
+<?php		
+	astra_footer_after(); 
+?>
+	</div><!-- #page -->
+<?php 
+	astra_body_bottom();    
 	wp_footer(); 
 ?>
 	</body>
